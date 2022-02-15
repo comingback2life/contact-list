@@ -1,8 +1,8 @@
-const apiURL= "https://randomuser.me/api/?results=20";
+const apiURL= "https://randomuser.me/api/?";
 const listElm = document.getElementById('list');
 
-const fetchUser=()=>{
- fetch(apiURL)
+const fetchUser=(params="results=12")=>{
+ fetch(apiURL+params)
  .then(res=>res.json())
  .then(data=>{
    let str="";
@@ -36,6 +36,6 @@ fetchUser();
 
 
 const handleOnChange = e=>{
-  const value = e.target.value;
-  console.log(value);
+  const params ="results=12&gender="+e.value;
+  fetchUser(params);
 }
