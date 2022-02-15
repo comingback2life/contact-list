@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col mt-5">
+          <h3 class="text-center display-5">Contact Card Generator   <i class="fa-solid fa-id-badge"></i></h3>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-6">
+            <input type="text" name="search" class="form-control" placeholder ="Search for a name">
+        </div>
+        <div class="col-4">
+          <select name="gender" id="" class="form-control">
+            <option value="" selected> Choose a Gender</option>
+            <option value="male">M</option>
+            <option value="female">F</option>
+          </select>
+        </div>
+        <div class="col">
+          <button class="btn btn-success">Generate!</button>
+        </div>
+      </div>
+      <div class="row mt-2" id="list">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 py-3">
+          <div class="card" >
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 py-3">
+          <div class="card" >
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
