@@ -15,6 +15,7 @@
 <body>
   <div class="wrapper">
     <div class="container">
+      
       <div class="row">
         <div class="col mt-5">
           <h3 class="text-center display-5">Contact Card Generator   <i class="fa-solid fa-id-badge"></i></h3>
@@ -22,18 +23,15 @@
       </div>
       <hr/>
       <div class="row">
-        <div class="col-6">
-            <input type="text" name="search" class="form-control" placeholder ="Search for a name">
+        <div class="col">
+            <input type="text" name="search" id="query"class="form-control" placeholder ="Search for a name" onChange="handleOnType(this)">
         </div>
-        <div class="col-4">
+        <div class="col">
           <select name="gender" id="" class="form-control" onchange="handleOnChange(this)">
             <option value="" selected> Choose a Gender</option>
             <option value="male">M</option>
             <option value="female">F</option>
           </select>
-        </div>
-        <div class="col">
-          <button class="btn btn-success">Generate!</button>
         </div>
       </div>
       <div class="row mt-2" id="list">
@@ -46,6 +44,8 @@
     </div>
   
   </div>
+ 
   <script src="script.js"></script>
+  
 </body>
 </html>
