@@ -20,6 +20,10 @@ body{
 h3{
   font-family: 'Patrick Hand', cursive;
 }
+.count{
+  color:white;
+  font-weight: bolder;
+}
 i{
   height:35px;
   width:35px;
