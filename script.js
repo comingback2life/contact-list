@@ -2,6 +2,7 @@ const apiURL = "https://randomuser.me/api/?";
 const listElm = document.getElementById('list');
 const searchTerm = document.getElementById('query');
 let users = "";
+
 const fetchUser = (params = "results=12") => {
   fetch(apiURL + params)
     .then(res => res.json())
@@ -36,8 +37,9 @@ const fetchUser = (params = "results=12") => {
 fetchUser();
 
 const displayCard = (users) => {
+  console.log(users)
   let str="";
-  if(users){
+  if(users.length){
     users.forEach(e=>{
       str+=`
       <div class="col-md-6 col-lg-3 py-3">
@@ -61,6 +63,11 @@ const displayCard = (users) => {
       listElm.innerHTML=str;
     })
    
+  }else{
+     str=`<div class="alert alert-danger" role="alert">
+   The user is not found, my friend !
+    </div>`
+    listElm.innerHTML=str;
   }
 };
 
@@ -70,20 +77,15 @@ const handleOnChange = e => {
 };
 
 const handleOnType = e => {
-  if(e.value===""){
-   let str=`<div class="alert alert-danger" role="alert">
-   The search bar is empty, my friend !
- </div>`
- listElm.innerHTML=str;
-  }
-  let user=[];
+  
   const foundUser = users.filter((item) => {
    // item?.name.first //nullish operator
     const userName = `${item.name.first} ${item.name.last}`.toLowerCase();
     if (userName.includes(e.value.toLowerCase())) { 
-      user.push(item);
-      displayCard(user);
+      
+      return item
     }
   }
   );
+  displayCard(foundUser);
 }
