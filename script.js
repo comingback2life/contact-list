@@ -1,74 +1,32 @@
 const apiURL = "https://randomuser.me/api/?";
 const listElm = document.getElementById('list');
 const searchTerm = document.getElementById('query');
-let users = "";
+let users = [];
 
-const fetchUser = (params = "results=12") => {
+const fetchUser = (params = "results=20") => {
   fetch(apiURL + params)
     .then(res => res.json())
     .then(data => {
-      let str = "";
       users = data.results;
-      users.map(users => {
-        str += `
-    <div class="col-md-6 col-lg-3 py-3">
-    <div class="card h-100" style="width: 20rem;">
-      <img src="${users.picture.large}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${users.name.title}. ${users.name.first} ${users.name.last}</h5>
-        <p class="card-text">
-        <ul class="list-unstyled">
-        <li> <i class="fa-solid fa-phone text-center pt-2 mt-2"></i>
-        ${users.phone}</li>
-        <li>
-        <i class="fa-solid fa-envelope text-center pt-2 mt-2"></i>${users.email}</li>
-        <li><i class="fa-solid fa-location-dot text-center pt-2 mt-2"></i> ${users.location.city} ${users.location.state} ${users.location.postcode} , ${users.location.country} </li>
-        </ul>
-        </p>
-      </div>
-    </div>
-  </div>
-    `;
-      });
-
-      listElm.innerHTML = str;
+      console.log(typeof(users))
+      generateCard(users);
     });
 };
+
 fetchUser();
 
 const displayCard = (users) => {
-  console.log(users)
   let str="";
   if(users.length){
-    users.forEach(e=>{
-      str+=`
-      <div class="col-md-6 col-lg-3 py-3">
-      <div class="card h-100" style="width: 20rem;">
-        <img src="${e.picture.large}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${e.name.title}. ${e.name.first} ${e.name.last}</h5>
-          <p class="card-text">
-          <ul class="list-unstyled">
-          <li> <i class="fa-solid fa-phone text-center pt-2 mt-2"></i>
-          ${e.phone}</li>
-          <li>
-          <i class="fa-solid fa-envelope text-center pt-2 mt-2"></i>${e.email}</li>
-          <li><i class="fa-solid fa-location-dot text-center pt-2 mt-2"></i> ${e.location.city} ${e.location.state} ${e.location.postcode} , ${e.location.country} </li>
-          </ul>
-          </p>
-        </div>
-      </div>
-    </div>
-      `
-      listElm.innerHTML=str;
-    })
-   
-  }else{
+    generateCard(users);
+    }
+  else{
      str=`<div class="alert alert-danger" role="alert">
    The user is not found, my friend !
     </div>`
     listElm.innerHTML=str;
   }
+
 };
 
 const handleOnChange = e => {
@@ -88,4 +46,32 @@ const handleOnType = e => {
   }
   );
   displayCard(foundUser);
+}
+const generateCard = (users)=>{
+  let str="";
+  str+=`<h3 class="text-center"> Number of users found <span class="count">${users.length}</span></h3>`
+
+  users.forEach(e=>{
+    str+=`
+    <div class="col-md-6 col-lg-3 py-3">
+    <div class="card h-100" style="width: 20rem;">
+      <img src="${e.picture.large}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${e.name.title}. ${e.name.first} ${e.name.last}</h5>
+        <p class="card-text">
+        <ul class="list-unstyled">
+        <li> <i class="fa-solid fa-phone text-center pt-2 mt-2"></i>
+        ${e.phone}</li>
+        <li>
+        <i class="fa-solid fa-envelope text-center pt-2 mt-2"></i>${e.email}</li>
+        <li><i class="fa-solid fa-location-dot text-center pt-2 mt-2"></i> ${e.location.city} ${e.location.state} ${e.location.postcode} , ${e.location.country} </li>
+        </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+    `
+
+  });
+  listElm.innerHTML=str;
 }
